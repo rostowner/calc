@@ -1,0 +1,16 @@
+{
+  "name": "calc",
+  "version": "0.0.1",
+  "description": "test",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "watchify": "^3.9.0"
+  },
+  "scripts": {
+    "test": "test",
+    "watch": "watchify src/app.js -o src/bound.js"
+  },
+  "author": "rost",
+  "license": "MIT"
+}
