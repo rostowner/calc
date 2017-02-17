@@ -9,6 +9,7 @@
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/style/style.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
@@ -17,23 +18,60 @@
 </head>
 <body>
 
+<div class="top-space">&nbsp;</div>
+
 <div class="container">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <h1 class="text-center">Hello!!!</h1>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <p class="text-center" data-bind="text: appName"></p>
-            <div>
-                <div>
-                    <input type="text" name="calcInput" /> <!-- input/output -->
+        <div class="col-md-3 col-md-offset-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" data-bind="text: appName"></h3>
                 </div>
-                <div>
-                    <div></div> <!-- numbers -->
-                    <div></div> <!-- operations -->
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="2*2=4" readonly="readonly" />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default">7</button>
+                                    <button type="button" class="btn btn-default">8</button>
+                                    <button type="button" class="btn btn-default">9</button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default">5</button>
+                                    <button type="button" class="btn btn-default">6</button>
+                                    <button type="button" class="btn btn-default">4</button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default">1</button>
+                                    <button type="button" class="btn btn-default">2</button>
+                                    <button type="button" class="btn btn-default">3</button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default col-md-offset-4">0</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default">/</button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default">*</button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default">-</button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default">+</button>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default btn-danger">C</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
