@@ -9,9 +9,7 @@ module.exports = function() {
 	var emptyString = '';
 	var emptyList = [];
 
-	this.log = ko.observableArray([
-		new logModel('2 + 2', 4)
-		]);
+	this.log = ko.observableArray(emptyList);
 	this.currentVal = ko.observable(emptyString);
 	this.nums = ko.observable(enums.nums);
 	this.operations = ko.observable(enums.operations);
@@ -26,10 +24,10 @@ module.exports = function() {
 	this.calculate = function() {
 		try {
 			var expression = this.currentVal();
-			var params = utils.getParams(expression)
+			var params = utils.getParams(expression);
 			var result = mathCtrl.doCalculation(params);
 
-			this.log().push(new logModel(expression, result));
+			this.log.push(new logModel(expression, result));
 			this.currentVal(result);
 
 		} catch (error) {
@@ -41,4 +39,10 @@ module.exports = function() {
 	this.reset = function() {
 		this.currentVal(emptyString);
 	};
+
+
+	this.showLogItem = function() {
+		console.log(this);
+	};
+
 };

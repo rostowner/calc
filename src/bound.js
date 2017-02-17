@@ -4,6 +4,16 @@
 var AppViewModel = require('./models/appVM.js');
 
 ko.applyBindings(new AppViewModel());
+
+
+
+ko.bindingHandlers.debug = {
+    init: function(element, valueAccessor) {
+        console.log( 'Knockoutbinding:' );
+        console.log( element );
+        console.log( ko.toJS(valueAccessor()) );
+    }
+};
 },{"./models/appVM.js":4}],2:[function(require,module,exports){
 'use strict';
 
@@ -47,9 +57,7 @@ module.exports = function() {
 	var emptyString = '';
 	var emptyList = [];
 
-	this.log = ko.observableArray([
-		new logModel('2 + 2', 4)
-		]);
+	this.log = ko.observableArray(emptyList);
 	this.currentVal = ko.observable(emptyString);
 	this.nums = ko.observable(enums.nums);
 	this.operations = ko.observable(enums.operations);
@@ -64,10 +72,10 @@ module.exports = function() {
 	this.calculate = function() {
 		try {
 			var expression = this.currentVal();
-			var params = utils.getParams(expression)
+			var params = utils.getParams(expression);
 			var result = mathCtrl.doCalculation(params);
 
-			this.log().push(new logModel(expression, result));
+			this.log.push(new logModel(expression, result));
 			this.currentVal(result);
 
 		} catch (error) {
@@ -79,6 +87,12 @@ module.exports = function() {
 	this.reset = function() {
 		this.currentVal(emptyString);
 	};
+
+
+	this.showLogItem = function() {
+		console.log(this);
+	};
+
 };
 },{"../ctrl/mathCtrl.js":2,"../utils/utils.js":7,"./enums.js":5,"./logModel.js":6}],5:[function(require,module,exports){
 'use strict';
@@ -90,10 +104,13 @@ module.exports = {
 },{}],6:[function(require,module,exports){
 'use strict';
 
-module.exports = function(expression, result) {
-	var str = expression + ' = ' + result + ';'
+function Log(expression, result) {
+	var str = expression + ' = ' + result + ';';
 	this.logText = ko.observable(str);
-};
+	this.tra = str;
+}
+
+module.exports = Log;
 },{}],7:[function(require,module,exports){
 'use strict';
 
