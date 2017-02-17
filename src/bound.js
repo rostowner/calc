@@ -4,16 +4,6 @@
 var AppViewModel = require('./models/appVM.js');
 
 ko.applyBindings(new AppViewModel());
-
-
-
-ko.bindingHandlers.debug = {
-    init: function(element, valueAccessor) {
-        console.log( 'Knockoutbinding:' );
-        console.log( element );
-        console.log( ko.toJS(valueAccessor()) );
-    }
-};
 },{"./models/appVM.js":4}],2:[function(require,module,exports){
 'use strict';
 
