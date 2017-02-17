@@ -84,12 +84,8 @@
                     <h3 class="panel-title" data-bind="text: logName"></h3>
                 </div>
                 <div class="panel-body">
-                    <ul class="list-group">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Morbi leo risus</li>
-                      <li class="list-group-item">Porta ac consectetur ac</li>
-                      <li class="list-group-item">Vestibulum at eros</li>
+                    <ul class="list-group" data-bind="foreach: log">
+                      <li class="list-group-item" data-bind"text: logText"></li>
                     </ul>
                 </div>
             </div>

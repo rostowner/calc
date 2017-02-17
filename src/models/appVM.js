@@ -4,9 +4,14 @@ module.exports = function() {
 	var enums = require('./enums.js');
 	var mathCtrl = require('../ctrl/mathCtrl.js');
 	var utils = require('../utils/utils.js');
+	var logModel = require('./logModel.js');
 
 	var emptyString = '';
+	var emptyList = [];
 
+	this.log = ko.observableArray([
+		new logModel('2 + 2', 4)
+		]);
 	this.currentVal = ko.observable(emptyString);
 	this.nums = ko.observable(enums.nums);
 	this.operations = ko.observable(enums.operations);
@@ -20,11 +25,13 @@ module.exports = function() {
 
 	this.calculate = function() {
 		try {
-			var params = utils.getParams(this.currentVal())
+			var expression = this.currentVal();
+			var params = utils.getParams(expression)
 			var result = mathCtrl.doCalculation(params);
 
-			// log calculations
+			this.log().push(new logModel(expression, result));
 			this.currentVal(result);
+
 		} catch (error) {
 			this.reset();
 			console.error(error);

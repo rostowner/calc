@@ -1,5 +1,5 @@
 'use strict';
 
-var AppViewModel = require('./viewModels/appVM.js');
+var AppViewModel = require('./models/appVM.js');
 
 ko.applyBindings(new AppViewModel());
