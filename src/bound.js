@@ -11,8 +11,8 @@ var operations = require('./operations.js');
 
 module.exports = {
 	doCalculation: function(params) {
-		var a = +params.a;
-		var b = +params.b;
+		var a = params.a;
+		var b = params.b;
 
 		return operations[params.operation](a, b);
 	},
@@ -104,14 +104,33 @@ module.exports = Log;
 },{}],7:[function(require,module,exports){
 'use strict';
 
-module.exports = {
-	getParams: function(str) {
-		var arr = str.split(' ');
-		return {
-			a: 			arr[0],
-			b: 			arr[2],
-			operation: 	arr[1]
-		};
+function getParams(str) {
+	var arr = str.split(' ');
+	var a = +arr[0];
+	var b = (arr[2] === '')? false: +arr[2];
+	var operation = arr[1];
+
+	validateParams();
+
+	return {
+		a: a,
+		b: b,
+		operation: 	operation
+	};
+}
+
+function validateParams(a, b, operation) {
+	if (!$.isNumeric(a) || 
+		!$.isNumeric(b) ||
+		!operation.match(/[\-/*+]/) ||
+		!operation.length ||
+		operation.length > 1 ) {
+
+		throw new Error('Wrong Parans');
 	}
+}
+
+module.exports = {
+	getParams: getParams
 };
 },{}]},{},[1]);
