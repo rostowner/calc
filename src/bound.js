@@ -44,15 +44,14 @@ module.exports = function() {
 	var utils = require('../utils/utils.js');
 	var logModel = require('./logModel.js');
 
-	var emptyString = '';
-	var emptyList = [];
-
-	this.log = ko.observableArray(emptyList);
-	this.currentVal = ko.observable(emptyString);
+	this.log = ko.observableArray([]);
+	this.currentVal = ko.observable('');
 	this.nums = ko.observable(enums.nums);
 	this.operations = ko.observable(enums.operations);
 	this.appName = ko.observable(enums.appName);
 	this.logName = ko.observable(enums.logName);
+	this.errorMessage = ko.observable('');
+	this.isErrorMessage = ko.observable(false);
 
 	this.addSymbol = function(symbol) {
 		var str = this.currentVal();
@@ -70,12 +69,16 @@ module.exports = function() {
 
 		} catch (error) {
 			this.reset();
+			this.isErrorMessage(true);
+			this.errorMessage(error);
 			console.error(error);
 		}
 	};
 
 	this.reset = function() {
-		this.currentVal(emptyString);
+		this.currentVal('');
+		this.isErrorMessage(false);
+		this.errorMessage('');
 	};
 
 
