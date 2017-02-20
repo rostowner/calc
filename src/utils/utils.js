@@ -6,7 +6,7 @@ function getParams(str) {
 	var b = (arr[2] === '')? false: +arr[2];
 	var operation = arr[1];
 
-	validateParams();
+	validateParams(a, b, operation);
 
 	return {
 		a: a,
