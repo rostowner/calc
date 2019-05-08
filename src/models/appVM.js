@@ -15,6 +15,8 @@ module.exports = function() {
 	this.errorMessage = ko.observable('');
 	this.isErrorMessage = ko.observable(false);
 
+	// olla
+
 	this.addSymbol = function(symbol) {
 		var str = this.currentVal();
 		this.currentVal(str + symbol);

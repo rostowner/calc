@@ -6,4 +6,6 @@ function Log(expression, result) {
 	this.tra = str;
 }
 
+// olla 3
+
 module.exports = Log;
